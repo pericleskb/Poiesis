@@ -4,13 +4,11 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.HorizontalDivider
@@ -36,6 +34,7 @@ import com.moomis.poiesis.BuildConfig
 import com.moomis.poiesis.R
 import com.moomis.poiesis.data.Author
 import com.moomis.poiesis.data.Poem
+import com.moomis.poiesis.ui.compose.DisableRippleEffect
 import com.moomis.poiesis.ui.compose.PoemPreviewParameterProvider
 import com.moomis.poiesis.ui.compose.debugPlaceholder
 import com.moomis.poiesis.ui.theme.spacing
@@ -112,35 +111,37 @@ fun PoemPreviewBottom(isSaved: Boolean, modifier: Modifier = Modifier) {
         horizontalArrangement = Arrangement.SpaceBetween,
         modifier = modifier.fillMaxWidth())
     {
-        TextButton(
-            onClick = {},
-            contentPadding = PaddingValues(0.dp)
-        ) {
-            Text(
-                text = "Read full poem",
-                color = MaterialTheme.colorScheme.primary,
-                style = MaterialTheme.typography.bodyLarge,
-                fontWeight = FontWeight.W600
-            )
-        }
-        IconToggleButton(
-            checked = isSaved,
-            onCheckedChange = {},
-        ) {
-            Icon(
-                painter = if (isSaved) painterResource(R.drawable.ic_bookmark_filled)
-                          else painterResource(R.drawable.ic_bookmark),
-                contentDescription = null,
-                tint = MaterialTheme.colorScheme.onSurfaceVariant,
-                modifier = Modifier.padding(MaterialTheme.spacing.extraSmall).fillMaxSize()
-            )
+        DisableRippleEffect {
+            TextButton(
+                onClick = {},
+                contentPadding = PaddingValues(0.dp)
+            ) {
+                Text(
+                    text = "Read full poem",
+                    color = MaterialTheme.colorScheme.primary,
+                    style = MaterialTheme.typography.bodyLarge,
+                    fontWeight = FontWeight.W600
+                )
+            }
+            IconToggleButton(
+                checked = isSaved,
+                onCheckedChange = {},
+            ) {
+                Icon(
+                    painter = if (isSaved) painterResource(R.drawable.ic_bookmark_filled)
+                    else painterResource(R.drawable.ic_bookmark),
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.padding(MaterialTheme.spacing.extraSmall).fillMaxSize()
+                )
+            }
         }
     }
 }
 
 @Preview(showBackground = true)
 @Composable
-private fun AuthorWithPicturePreview(
+private fun PreviewAuthorWithPicture(
     @PreviewParameter(PoemPreviewParameterProvider::class) data: Pair<Author, Poem>
 ) {
     val author = data.first
@@ -151,7 +152,7 @@ private fun AuthorWithPicturePreview(
 
 @Preview(showBackground = true)
 @Composable
-private fun PoemPreviewPreview(
+private fun PreviewPoemPreview(
     @PreviewParameter(PoemPreviewParameterProvider::class) data: Pair<Author, Poem>
 ) {
     val poem = data.second
@@ -162,7 +163,7 @@ private fun PoemPreviewPreview(
 
 @Preview(showBackground = true)
 @Composable
-private fun PoemPreviewCardPreview(
+private fun PreviewPoemPreviewCard(
     @PreviewParameter(PoemPreviewParameterProvider::class) data: Pair<Author, Poem>
 ) {
     val (author, poem) = data

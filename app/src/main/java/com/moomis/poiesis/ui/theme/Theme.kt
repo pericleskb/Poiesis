@@ -1,21 +1,14 @@
-package com.example.compose
-import android.os.Build
+package com.moomis.poiesis.ui.theme
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.material3.darkColorScheme
-import androidx.compose.material3.dynamicDarkColorScheme
-import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
-import com.moomis.poiesis.ui.theme.Spacing
-import com.moomis.poiesis.ui.theme.Typography
-import com.moomis.poiesis.ui.theme.poiesisShapes
 
 private val lightScheme = lightColorScheme(
     primary = primaryLight,

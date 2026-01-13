@@ -1,4 +1,4 @@
-package com.moomis.poiesis.ui
+package com.moomis.poiesis.ui.compose
 
 import androidx.annotation.DrawableRes
 import androidx.compose.runtime.Composable

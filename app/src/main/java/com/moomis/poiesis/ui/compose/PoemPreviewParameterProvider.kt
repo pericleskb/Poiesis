@@ -1,8 +1,8 @@
 package com.moomis.poiesis.ui.compose
 
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
-import com.moomis.poiesis.data.Author
-import com.moomis.poiesis.data.Poem
+import com.moomis.poiesis.data.models.Author
+import com.moomis.poiesis.data.models.Poem
 
 class PoemPreviewParameterProvider : PreviewParameterProvider<Pair<Author, Poem>> {
 

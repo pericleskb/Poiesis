@@ -32,8 +32,8 @@ import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
 import com.moomis.poiesis.BuildConfig
 import com.moomis.poiesis.R
-import com.moomis.poiesis.data.Author
-import com.moomis.poiesis.data.Poem
+import com.moomis.poiesis.data.models.Author
+import com.moomis.poiesis.data.models.Poem
 import com.moomis.poiesis.ui.compose.DisableRippleEffect
 import com.moomis.poiesis.ui.compose.PoemPreviewParameterProvider
 import com.moomis.poiesis.ui.compose.debugPlaceholder

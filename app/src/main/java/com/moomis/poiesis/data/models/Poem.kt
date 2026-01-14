@@ -1,4 +1,4 @@
-package com.moomis.poiesis.data
+package com.moomis.poiesis.data.models
 
 data class Poem (
     val author: String,

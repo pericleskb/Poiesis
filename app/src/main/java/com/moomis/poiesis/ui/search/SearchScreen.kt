@@ -1,12 +1,12 @@
-package com.moomis.poiesis.ui.home
+package com.moomis.poiesis.ui.search
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 
 @Composable
-fun HomeScreen(modifier: Modifier = Modifier) {
+fun SearchScreen(modifier: Modifier = Modifier) {
     Text(
-        text = "Welcome to the home screen!"
+        text = "Welcome to the search screen!"
     )
 }

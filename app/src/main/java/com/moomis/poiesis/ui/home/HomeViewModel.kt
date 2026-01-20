@@ -37,7 +37,7 @@ class HomeViewModel(poemsRepository: PoemsRepository): ViewModel() {
     companion object {
         val Factory: ViewModelProvider.Factory = viewModelFactory {
             initializer {
-                val poemsRepository = PoemsRepository(
+                val poemsRepository = PoemsRepository( //change to DI
                     PoemsRemoteDataSource(
                         PoetryApi.retrofitService, Dispatchers.IO
                     )

@@ -6,7 +6,7 @@ import com.moomis.poiesis.data.models.Poem
 
 class PoemPreviewParameterProvider : PreviewParameterProvider<Pair<Author, Poem>> {
 
-    private val mockAuthor = Author(
+    val mockAuthor = Author(
         name = "James Baldwin",
         dob = "Dec 10 1965",
         dod = "Jan 14 2013",
@@ -14,7 +14,7 @@ class PoemPreviewParameterProvider : PreviewParameterProvider<Pair<Author, Poem>
         imageURL = "https://covers.openlibrary.org/a/olid/OL391839A-S.jpg",
     )
 
-    private val mockPoem = Poem(
+    val mockPoem = Poem(
         author = "James Baldwin",
         title = "The giver (for Berdis)",
         body = "If the hope of giving\n" +

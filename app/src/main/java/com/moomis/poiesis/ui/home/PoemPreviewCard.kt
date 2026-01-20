@@ -58,7 +58,7 @@ fun PoemPreviewCard(author: Author, poem: Poem, modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun AuthorWithPicture(author: Author, modifier: Modifier = Modifier) {
+private fun AuthorWithPicture(author: Author, modifier: Modifier = Modifier) {
     Row(verticalAlignment = Alignment.CenterVertically, modifier = modifier.semantics(mergeDescendants = true) {}) {
         AsyncImage(
             model = author.imageURL,
@@ -86,7 +86,7 @@ fun AuthorWithPicture(author: Author, modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun PoemPreview(poem: Poem, modifier: Modifier = Modifier) {
+private fun PoemPreview(poem: Poem, modifier: Modifier = Modifier) {
     Column(
         modifier = modifier.padding(top = MaterialTheme.spacing.small)
     ) {
@@ -106,7 +106,7 @@ fun PoemPreview(poem: Poem, modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun PoemPreviewBottom(isSaved: Boolean, modifier: Modifier = Modifier) {
+private fun PoemPreviewBottom(isSaved: Boolean, modifier: Modifier = Modifier) {
     Row(
         horizontalArrangement = Arrangement.SpaceBetween,
         modifier = modifier.fillMaxWidth())

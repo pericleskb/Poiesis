@@ -1,18 +1,42 @@
 package com.moomis.poiesis.ui.home
 
-import androidx.compose.material3.Text
+import android.widget.Toast
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.moomis.poiesis.ui.compose.PoemPreviewParameterProvider
+import com.moomis.poiesis.ui.theme.spacing
 
 @Composable
 fun HomeScreen(modifier: Modifier = Modifier) {
     val homeViewModel: HomeViewModel = viewModel(
         factory = HomeViewModel.Factory
     )
-    Text(
-        text = "Welcome to the home screen!"
-    )
+    val uiState by homeViewModel.uiState.collectAsStateWithLifecycle()
+
+    if (uiState.error != null) {
+        //TODO change with Snackbar
+        val toast = Toast.makeText(LocalContext.current, uiState.error, Toast.LENGTH_LONG)
+        toast.show()
+    }
+
+    LazyColumn(
+        contentPadding = PaddingValues(horizontal = MaterialTheme.spacing.medium,
+            vertical = MaterialTheme.spacing.small),
+        verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.medium),
+    ) {
+        items(uiState.randomPoems) {
+            PoemPreviewCard(PoemPreviewParameterProvider().mockAuthor, it)
+        }
+    }
 }
 
 

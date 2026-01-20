@@ -12,24 +12,39 @@ import com.moomis.poiesis.network.PoetryApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-class HomeViewModelState(
-    val randomPoems: List<Poem> = listOf()
+data class HomeViewModelState(
+    val randomPoems: List<Poem> = emptyList(),
+    val isLoading: Boolean = false,
+    val error: String? = null
 )
 
 class HomeViewModel(poemsRepository: PoemsRepository): ViewModel() {
 
     private val _uiState = MutableStateFlow(HomeViewModelState())
-    val uiState: StateFlow<HomeViewModelState> = _uiState
+    val uiState: StateFlow<HomeViewModelState> = _uiState.asStateFlow()
 
     init {
         viewModelScope.launch {
-            val result = poemsRepository.fetchRandomPoems()
-            _uiState.update {
-                it.randomPoems.plus(result)
-                return@update it
+            _uiState.update { it.copy(isLoading = true, error = null) }
+            try {
+                val result = poemsRepository.fetchRandomPoems()
+                _uiState.update {
+                    it.copy(
+                        randomPoems = it.randomPoems + result,
+                        isLoading = false
+                    )
+                }
+            } catch (e: Exception) {
+                _uiState.update {
+                    it.copy(
+                        isLoading = false,
+                        error = e.message ?: "Unknown error"
+                    )
+                }
             }
         }
     }

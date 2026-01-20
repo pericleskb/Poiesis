@@ -1,6 +1,6 @@
 package com.moomis.poiesis.network
 
-import com.moomis.poiesis.data.apiModels.PoemDto
+import com.moomis.poiesis.data.DTOs.PoemDto
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
@@ -12,6 +12,7 @@ private val retrofit = Retrofit.Builder().baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
+//TODO replace Singleton with DI
 object PoetryApi {
     val retrofitService: PoetryApiService by lazy {
         retrofit.create(PoetryApiService::class.java)

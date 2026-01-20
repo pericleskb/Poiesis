@@ -3,9 +3,13 @@ package com.moomis.poiesis.ui.home
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
 fun HomeScreen(modifier: Modifier = Modifier) {
+    val homeViewModel: HomeViewModel = viewModel(
+        factory = HomeViewModel.Factory
+    )
     Text(
         text = "Welcome to the home screen!"
     )

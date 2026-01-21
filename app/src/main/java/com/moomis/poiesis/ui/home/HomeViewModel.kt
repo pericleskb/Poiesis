@@ -22,28 +22,27 @@ data class HomeViewModelState(
     val error: String? = null
 )
 
-class HomeViewModel(poemsRepository: PoemsRepository): ViewModel() {
+class HomeViewModel(val poemsRepository: PoemsRepository): ViewModel() {
 
     private val _uiState = MutableStateFlow(HomeViewModelState())
     val uiState: StateFlow<HomeViewModelState> = _uiState.asStateFlow()
 
     init {
+        fetchRandomPoems()
+    }
+
+    fun fetchRandomPoems() {
+        if (_uiState.value.isLoading) return
         viewModelScope.launch {
             _uiState.update { it.copy(isLoading = true, error = null) }
             try {
                 val result = poemsRepository.fetchRandomPoems()
                 _uiState.update {
-                    it.copy(
-                        randomPoems = it.randomPoems + result,
-                        isLoading = false
-                    )
+                    it.copy(randomPoems = it.randomPoems + result, isLoading = false)
                 }
             } catch (e: Exception) {
                 _uiState.update {
-                    it.copy(
-                        isLoading = false,
-                        error = e.message ?: "Unknown error"
-                    )
+                    it.copy(isLoading = false, error = e.message ?: "Unknown error")
                 }
             }
         }

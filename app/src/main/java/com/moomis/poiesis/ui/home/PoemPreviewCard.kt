@@ -51,7 +51,7 @@ fun PoemPreviewCard(author: Author, poem: Poem, modifier: Modifier = Modifier) {
         Column(modifier = Modifier.padding(MaterialTheme.spacing.medium)) {
             AuthorWithPicture(author)
             PoemPreview(poem)
-            HorizontalDivider()
+            HorizontalDivider(modifier = Modifier.padding(top = MaterialTheme.spacing.small))
             PoemPreviewBottom(poem.isSaved)
         }
     }

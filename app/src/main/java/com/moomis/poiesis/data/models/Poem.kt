@@ -1,7 +1,7 @@
 package com.moomis.poiesis.data.models
 
 data class Poem (
-    val author: String,
+    val author: Author,
     val title: String,
     val lineCount: Int,
     val body: String,

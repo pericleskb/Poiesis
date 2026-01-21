@@ -14,12 +14,12 @@ private val retrofit = Retrofit.Builder().baseUrl(BASE_URL)
 
 //TODO replace Singleton with DI
 object PoetryApi {
-    val retrofitService: PoetryApiService by lazy {
-        retrofit.create(PoetryApiService::class.java)
+    val poetryService: PoetryService by lazy {
+        retrofit.create(PoetryService::class.java)
     }
 }
 
-interface PoetryApiService {
+interface PoetryService {
     @GET("random/10")
     suspend fun getRandomPoems(): List<PoemDto>
 }

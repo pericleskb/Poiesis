@@ -40,7 +40,7 @@ import com.moomis.poiesis.ui.compose.debugPlaceholder
 import com.moomis.poiesis.ui.theme.spacing
 
 @Composable
-fun PoemPreviewCard(author: Author, poem: Poem, modifier: Modifier = Modifier) {
+fun PoemPreviewCard(poem: Poem, modifier: Modifier = Modifier) {
     Card(
         onClick = {},
         shape = MaterialTheme.shapes.medium,
@@ -49,19 +49,18 @@ fun PoemPreviewCard(author: Author, poem: Poem, modifier: Modifier = Modifier) {
         modifier = modifier
     ) {
         Column(modifier = Modifier.padding(MaterialTheme.spacing.medium)) {
-            AuthorWithPicture(author)
+            AuthorWithPicture(poem.author.toUi())
             PoemPreview(poem)
-            HorizontalDivider(modifier = Modifier.padding(top = MaterialTheme.spacing.small))
             PoemPreviewBottom(poem.isSaved)
         }
     }
 }
 
 @Composable
-private fun AuthorWithPicture(author: Author, modifier: Modifier = Modifier) {
+private fun AuthorWithPicture(author: AuthorUi, modifier: Modifier = Modifier) {
     Row(verticalAlignment = Alignment.CenterVertically, modifier = modifier.semantics(mergeDescendants = true) {}) {
         AsyncImage(
-            model = author.imageURL,
+            model = author.imageUrl,
             contentDescription = "Authors Image",
             contentScale = ContentScale.Crop,
             modifier = Modifier
@@ -146,7 +145,7 @@ private fun PreviewAuthorWithPicture(
 ) {
     val author = data.first
     MaterialTheme {
-        AuthorWithPicture(author = author)
+        AuthorWithPicture(author = author.toUi())
     }
 }
 
@@ -164,10 +163,10 @@ private fun PreviewPoemPreview(
 @Preview(showBackground = true)
 @Composable
 private fun PreviewPoemPreviewCard(
-    @PreviewParameter(PoemPreviewParameterProvider::class) data: Pair<Author, Poem>
+    @PreviewParameter(PoemPreviewParameterProvider::class) data: Poem
 ) {
-    val (author, poem) = data
+    val poem = data
     MaterialTheme {
-        PoemPreviewCard(author, poem)
+        PoemPreviewCard(poem)
     }
 }

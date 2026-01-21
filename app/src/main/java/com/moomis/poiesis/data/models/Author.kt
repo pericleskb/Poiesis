@@ -2,10 +2,8 @@ package com.moomis.poiesis.data.models
 
 data class Author (
     val name: String,
-    val dob: String,//date of birth
-    var dod: String?,//date of death
-    val poemsSaved: Int,
-    val imageURL: String
-) {
-    fun getLifeTime() = if (!dod.isNullOrBlank()) "$dob - $dod" else dob
-}
+    val dob: String? = null,//date of birth
+    val dod: String? = null,//date of death
+    val poemsSaved: Int = 0,
+    val imageURL: String? = null
+)

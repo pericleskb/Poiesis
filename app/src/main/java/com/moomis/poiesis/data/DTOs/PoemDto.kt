@@ -1,6 +1,5 @@
 package com.moomis.poiesis.data.DTOs
 
-import com.google.gson.annotations.SerializedName
 import com.moomis.poiesis.data.models.Poem
 
 data class PoemDto (
@@ -10,12 +9,12 @@ data class PoemDto (
     val lines: List<String>,
 )
 
-fun PoemDto.toModel() : Poem {
-    return Poem(
-        author,
-        title,
-        linecount,
-        lines.reduce { acc, string -> acc + "\n" + string  },
-        false
-    )
-}
+//fun PoemDto.toModel() : Poem {
+//    return Poem(
+//        author,
+//        title,
+//        linecount,
+//        lines.reduce { acc, string -> acc + "\n" + string  },
+//        false
+//    )
+//}

@@ -61,7 +61,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
         modifier = Modifier.fillMaxWidth()
     ) {
         items(uiState.randomPoems) { poem ->
-            PoemPreviewCard(PoemPreviewParameterProvider().mockAuthor, poem)
+            PoemPreviewCard(poem)
         }
 
         if (uiState.isLoading) {

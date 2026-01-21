@@ -4,7 +4,7 @@ import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import com.moomis.poiesis.data.models.Author
 import com.moomis.poiesis.data.models.Poem
 
-class PoemPreviewParameterProvider : PreviewParameterProvider<Pair<Author, Poem>> {
+class PoemPreviewParameterProvider : PreviewParameterProvider<Poem> {
 
     val mockAuthor = Author(
         name = "James Baldwin",
@@ -15,7 +15,7 @@ class PoemPreviewParameterProvider : PreviewParameterProvider<Pair<Author, Poem>
     )
 
     val mockPoem = Poem(
-        author = "James Baldwin",
+        author = mockAuthor,
         title = "The giver (for Berdis)",
         body = "If the hope of giving\n" +
                 "is to love the living,\n" +
@@ -45,7 +45,5 @@ class PoemPreviewParameterProvider : PreviewParameterProvider<Pair<Author, Poem>
         isSaved = false
     )
 
-    override val values = sequenceOf(
-        Pair(mockAuthor, mockPoem)
-    )
+    override val values = sequenceOf(mockPoem)
 }

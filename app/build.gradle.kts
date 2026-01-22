@@ -49,6 +49,7 @@ android {
 
 dependencies {
     implementation(libs.androidx.ui)
+    implementation(libs.androidx.appcompat.resources)
     val nav_version = "2.9.6"
 
     implementation(libs.androidx.core.ktx)

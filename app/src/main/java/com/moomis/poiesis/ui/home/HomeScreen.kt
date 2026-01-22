@@ -22,11 +22,11 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.moomis.poiesis.ui.compose.PoemPreviewParameterProvider
 import com.moomis.poiesis.ui.theme.spacing
 
 @Composable
 fun HomeScreen(modifier: Modifier = Modifier) {
+    //TODO maintain same random poems while the app is not killed
     val homeViewModel: HomeViewModel = viewModel(factory = HomeViewModel.Factory)
     val uiState by homeViewModel.uiState.collectAsStateWithLifecycle()
     val listState = rememberLazyListState()

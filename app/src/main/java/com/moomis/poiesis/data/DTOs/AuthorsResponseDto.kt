@@ -24,6 +24,6 @@ fun AuthorDto.toModel(): Author {
         name = name,
         dob = birthDate,
         dod = deathDate,
-        imageURL = "https://covers.openlibrary.org/a/olid/$key-M.jpg"
+        imageUrl = "https://covers.openlibrary.org/a/olid/$key-M.jpg"
     )
 }

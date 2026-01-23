@@ -11,7 +11,7 @@ class PoemPreviewParameterProvider : PreviewParameterProvider<Poem> {
         dob = "Dec 10 1965",
         dod = "Jan 14 2013",
         poemsSaved = 10,
-        imageURL = "https://covers.openlibrary.org/a/olid/OL391839A-S.jpg",
+        imageUrl = "https://covers.openlibrary.org/a/olid/OL391839A-S.jpg",
     )
 
     val mockPoem = Poem(

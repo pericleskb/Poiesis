@@ -17,5 +17,5 @@ fun Author.toUi(): AuthorUi = AuthorUi(
     dob = dob ?: "",
     dod = dod ?: "",
     poemsSaved = poemsSaved,
-    imageUrl = imageURL ?: ""
+    imageUrl = imageUrl ?: ""
 )

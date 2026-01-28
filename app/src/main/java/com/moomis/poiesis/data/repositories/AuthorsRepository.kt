@@ -1,6 +1,6 @@
 package com.moomis.poiesis.data.repositories
 
-import com.moomis.poiesis.data.DTOs.toModel
+import com.moomis.poiesis.data.dto.toModel
 import com.moomis.poiesis.data.dataSources.AuthorsRemoteDataSource
 import com.moomis.poiesis.data.models.Author
 

@@ -1,6 +1,6 @@
 package com.moomis.poiesis.data.dataSources
 
-import com.moomis.poiesis.data.DTOs.PoemDto
+import com.moomis.poiesis.data.dto.PoemDto
 import com.moomis.poiesis.network.PoetryService
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext

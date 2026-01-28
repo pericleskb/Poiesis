@@ -13,7 +13,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconToggleButton
 import androidx.compose.material3.MaterialTheme
@@ -43,13 +42,11 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import androidx.core.graphics.drawable.toBitmap
 import coil3.compose.AsyncImage
-import com.moomis.poiesis.BuildConfig
 import com.moomis.poiesis.R
 import com.moomis.poiesis.data.models.Author
 import com.moomis.poiesis.data.models.Poem
 import com.moomis.poiesis.ui.compose.DisableRippleEffect
 import com.moomis.poiesis.ui.compose.PoemPreviewParameterProvider
-import com.moomis.poiesis.ui.compose.debugPlaceholder
 import com.moomis.poiesis.ui.theme.spacing
 
 @Composable
@@ -62,7 +59,7 @@ fun PoemPreviewCard(poem: Poem, modifier: Modifier = Modifier) {
         modifier = modifier
     ) {
         Column(modifier = Modifier.padding(MaterialTheme.spacing.medium)) {
-            AuthorWithPicture(poem.author.toUi())
+            AuthorWithPicture(poem.author.toUiModel())
             PoemPreview(poem)
             PoemPreviewBottom(poem.isSaved)
         }
@@ -181,7 +178,7 @@ private fun PreviewAuthorWithPicture(
 ) {
     val author = data.first
     MaterialTheme {
-        AuthorWithPicture(author = author.toUi())
+        AuthorWithPicture(author = author.toUiModel())
     }
 }
 

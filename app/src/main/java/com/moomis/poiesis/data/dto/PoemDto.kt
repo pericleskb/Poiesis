@@ -1,6 +1,4 @@
-package com.moomis.poiesis.data.DTOs
-
-import com.moomis.poiesis.data.models.Poem
+package com.moomis.poiesis.data.dto
 
 data class PoemDto (
     val author: String,

@@ -12,8 +12,8 @@ import com.moomis.poiesis.ui.search.SearchScreen
 
 @Composable
 fun PoiesisNavHost(
-    navController: NavHostController = rememberNavController(),
     modifier: Modifier = Modifier,
+    navController: NavHostController = rememberNavController()
 ) {
     NavHost(
         navController = navController,

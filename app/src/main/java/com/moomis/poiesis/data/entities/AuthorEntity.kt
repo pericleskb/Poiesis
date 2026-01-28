@@ -19,7 +19,7 @@ data class AuthorWithPoems(
     @Embedded val author: AuthorEntity,
     @Relation(
         parentColumn = "authorId",
-        entityColumn = "poemId"
+        entityColumn = "poemAuthorId"
     )
     val poems: List<PoemEntity>
 )

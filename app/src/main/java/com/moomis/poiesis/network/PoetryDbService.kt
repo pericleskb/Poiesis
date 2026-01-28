@@ -1,6 +1,6 @@
 package com.moomis.poiesis.network
 
-import com.moomis.poiesis.data.DTOs.PoemDto
+import com.moomis.poiesis.data.dto.PoemDto
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET

@@ -1,4 +1,4 @@
-package com.moomis.poiesis.data.DTOs
+package com.moomis.poiesis.data.dto
 
 import com.google.gson.annotations.SerializedName
 import com.moomis.poiesis.data.models.Author

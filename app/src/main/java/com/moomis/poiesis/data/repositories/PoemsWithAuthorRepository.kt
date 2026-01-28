@@ -1,6 +1,6 @@
 package com.moomis.poiesis.data.repositories
 
-import com.moomis.poiesis.data.DTOs.PoemDto
+import com.moomis.poiesis.data.dto.PoemDto
 import com.moomis.poiesis.data.models.Poem
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll

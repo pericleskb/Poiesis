@@ -1,4 +1,4 @@
-package com.moomis.poiesis.data.DAOs
+package com.moomis.poiesis.data.dao
 
 import androidx.room.Dao
 import androidx.room.Delete
@@ -11,14 +11,14 @@ import com.moomis.poiesis.data.entities.PoemWithAuthor
 
 @Dao
 interface PoemDao {
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun savePoem(poemEntity: PoemEntity): Long
 
     @Delete
     suspend fun deletePoem(poemEntity: PoemEntity)
 
-    @Transaction
     @Query("SELECT * from poems")
-    suspend fun getAllPoems(): List<PoemWithAuthor>
+    suspend fun getAllPoems(): List<PoemEntity>
 
 }

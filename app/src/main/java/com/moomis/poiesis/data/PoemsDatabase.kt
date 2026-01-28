@@ -4,8 +4,8 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.moomis.poiesis.data.DAOs.AuthorDao
-import com.moomis.poiesis.data.DAOs.PoemDao
+import com.moomis.poiesis.data.dao.AuthorDao
+import com.moomis.poiesis.data.dao.PoemDao
 import com.moomis.poiesis.data.entities.AuthorEntity
 import com.moomis.poiesis.data.entities.PoemEntity
 

@@ -1,32 +1,21 @@
 package com.moomis.poiesis.ui.home
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import androidx.lifecycle.viewmodel.initializer
-import androidx.lifecycle.viewmodel.viewModelFactory
-import com.moomis.poiesis.data.dataSources.AuthorsRemoteDataSource
-import com.moomis.poiesis.data.dataSources.PoemsRemoteDataSource
 import com.moomis.poiesis.data.models.Poem
-import com.moomis.poiesis.data.repositories.AuthorsRepository
-import com.moomis.poiesis.data.repositories.PoemsRepository
 import com.moomis.poiesis.data.repositories.PoemsWithAuthorRepository
-import com.moomis.poiesis.network.OpenLibraryApi
-import com.moomis.poiesis.network.PoetryApi
-import kotlinx.coroutines.Dispatchers
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-data class HomeViewModelState(
-    val randomPoems: List<Poem> = emptyList(),
-    val isLoading: Boolean = false,
-    val error: String? = null
-)
-
-class HomeViewModel(val poemsWithAuthorRepository: PoemsWithAuthorRepository): ViewModel() {
+@HiltViewModel
+class HomeViewModel @Inject constructor(
+    private val poemsWithAuthorRepository: PoemsWithAuthorRepository
+) : ViewModel() {
 
     private val _uiState = MutableStateFlow(HomeViewModelState())
     val uiState: StateFlow<HomeViewModelState> = _uiState.asStateFlow()
@@ -51,23 +40,10 @@ class HomeViewModel(val poemsWithAuthorRepository: PoemsWithAuthorRepository): V
             }
         }
     }
-
-    companion object {
-        val Factory: ViewModelProvider.Factory = viewModelFactory {
-            initializer {
-                val poemsRepository = PoemsRepository( //change to DI
-                    PoemsRemoteDataSource(
-                        PoetryApi.poetryService, Dispatchers.IO
-                    )
-                )
-                val authorsRepository = AuthorsRepository( //change to DI
-                    AuthorsRemoteDataSource(
-                        OpenLibraryApi.openLibraryApiService, Dispatchers.IO
-                    )
-                )
-                val poemsWithAuthorRepository = PoemsWithAuthorRepository(poemsRepository, authorsRepository)
-                HomeViewModel(poemsWithAuthorRepository)
-            }
-        }
-    }
 }
+
+data class HomeViewModelState(
+    val randomPoems: List<Poem> = emptyList(),
+    val isLoading: Boolean = false,
+    val error: String? = null
+)
